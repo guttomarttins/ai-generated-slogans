@@ -12,7 +12,8 @@ function parseDeepSeekText(responseBody: any) {
 }
 
 export async function POST(req: Request) {
-  const token = cookies().get(SESSION_COOKIE_NAME)?.value || new URL(req.url).searchParams.get('sessionToken');
+  const cookieStore = await cookies();
+  const token = cookieStore.get(SESSION_COOKIE_NAME)?.value || new URL(req.url).searchParams.get('sessionToken');
   if (!token) {
     return NextResponse.json({ message: 'Não autorizado.' }, { status: 401 });
   }

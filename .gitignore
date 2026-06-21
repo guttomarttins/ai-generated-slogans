@@ -3,6 +3,7 @@ node_modules
 .next
 out
 data/app.db
+.env
 generate_resp.json
 signup_resp.html
 .vscode
