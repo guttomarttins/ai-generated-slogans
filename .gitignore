@@ -1,1 +1,8 @@
 .claude/settings.json
+node_modules
+.next
+out
+data/app.db
+generate_resp.json
+signup_resp.html
+.vscode
