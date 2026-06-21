@@ -3,12 +3,13 @@ import { cookies } from 'next/headers';
 import { deleteSessionByToken, SESSION_COOKIE_NAME } from '@/lib/auth';
 
 export async function POST(req: Request) {
-  const sessionToken = cookies().get(SESSION_COOKIE_NAME)?.value;
+  const cookieStore = await cookies();
+  const sessionToken = cookieStore.get(SESSION_COOKIE_NAME)?.value;
   if (sessionToken) {
     deleteSessionByToken(sessionToken);
   }
 
-  cookies().set({
+  cookieStore.set({
     name: SESSION_COOKIE_NAME,
     value: '',
     httpOnly: true,

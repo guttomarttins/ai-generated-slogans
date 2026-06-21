@@ -23,7 +23,8 @@ export async function POST(req: Request) {
   const userId = Number(result.lastInsertRowid);
   const session = createSession(userId);
 
-  cookies().set({
+  const cookieStore = await cookies();
+  cookieStore.set({
     name: SESSION_COOKIE_NAME,
     value: session.token,
     httpOnly: true,

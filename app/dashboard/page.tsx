@@ -8,7 +8,8 @@ import { SESSION_COOKIE_NAME } from '@/lib/auth';
 export const dynamic = 'force-dynamic';
 
 async function getUserFromSession() {
-  const sessionToken = cookies().get(SESSION_COOKIE_NAME)?.value;
+  const cookieStore = await cookies();
+  const sessionToken = cookieStore.get(SESSION_COOKIE_NAME)?.value;
   if (!sessionToken) return null;
 
   const session = db.prepare('SELECT * FROM sessions WHERE token = ?').get(sessionToken);
