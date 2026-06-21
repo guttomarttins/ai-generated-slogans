@@ -1,3 +1,5 @@
+//This is an exempla only
+//Really location {ROOT_PROJECT}.claude/settins.json
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
